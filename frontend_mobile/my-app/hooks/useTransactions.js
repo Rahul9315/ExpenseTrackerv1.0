@@ -1,14 +1,16 @@
 //react custom hook file to comunicate with backend to get the data in a neet way
-
 import { useCallback } from "react";
 import { useState } from "react";
 import { Alert } from "react-native";
 
-const API_URL = "http://localhost:5001/api" ;
+//const API_URL = "https://expense-tracker-backend-for-render.onrender.com/api" ;
+
+// use EXPO_PUBLIC_{whatever} by this we ont have to install dotenv env
+const API_URL = process.env.EXPO_PUBLIC_API_URL_RENDER;
 
 export const useTransactions = (userId) => {
     const [transactions , setTransactions] = useState([]);
-    const [summary, setSumary] = useState({
+    const [summary, setSummary] = useState({
         balance: 0,
         income: 0,
         expenses: 0,
@@ -29,9 +31,11 @@ export const useTransactions = (userId) => {
         
     }, [userId] )
 
+
+
     const fetchSummary = useCallback(async () => {
         try {
-            const response = await fetch(`${API_URL}/summary/${userId}`);
+            const response = await fetch(`${API_URL}/transactions/summary/${userId}`);
             const data = await response.json();
             setSummary(data);
 
@@ -41,6 +45,11 @@ export const useTransactions = (userId) => {
         }
         
     }, [userId] )
+    
+  
+    
+
+
 
 
     const loadData =useCallback(async () => {
