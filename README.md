@@ -43,7 +43,7 @@ A beautifully crafted cross-platform **React Native** app to manage personal fin
 git clone https://github.com/your-username/ExpenseTrackerv1.0.git
 cd ExpenseTrackerv1.0/frontend_mobile/my-app
 npm install --legacy-peer-deps
-
+```
 
 ---
 
@@ -54,7 +54,7 @@ Create a .env file in your project root:
 EXPO_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 EXPO_PUBLIC_SUPABASE_KEY=your-anon-key
 EXPO_PUBLIC_API_URL_RENDER=https://your-express-api.onrender.com
-
+```
 Also add these environment variables on the Expo.dev dashboard under your project settings.
 
 
@@ -64,7 +64,7 @@ Also add these environment variables on the Expo.dev dashboard under your projec
 
 ```bash
 npx expo start --tunnel
-
+```
 Scan the QR with Expo Go on Android or iOS
 
 
