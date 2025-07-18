@@ -29,14 +29,16 @@ A beautifully crafted cross-platform **React Native** app to manage personal fin
 
 ## 📸 Screenshots
 
-| Home | Add Expense | Dashboard |
-|------|-------------|-----------|
-| ![Home](![WhatsApp Image 2025-07-18 at 11 47 05 AM (2)](https://github.com/user-attachments/assets/9dd350ca-3f31-4867-a698-933176a622a0)
-) | ![Add](![WhatsApp Image 2025-07-18 at 11 47 05 AM](https://github.com/user-attachments/assets/30e4e67b-5a33-4472-a7d0-8801b1e30ad2)
-) | ![Dash](![WhatsApp Image 2025-07-18 at 11 47 05 AM (1)](https://github.com/user-attachments/assets/1684dc42-e26b-42f8-b6b2-687652c97fc5)
-) |
+Home:
+![WhatsApp Image 2025-07-18 at 11 47 05 AM](https://github.com/user-attachments/assets/28eb65a7-0968-4f6a-a552-982d142a1985)
 
+Dashboard:
+![WhatsApp Image 2025-07-18 at 11 47 05 AM (1)](https://github.com/user-attachments/assets/26fe02a8-bc8b-4f61-afaf-028117b42936)
 
+Add Screen:
+![WhatsApp Image 2025-07-18 at 11 47 05 AM (2)](https://github.com/user-attachments/assets/c3e2cabe-9f40-4660-b973-56d789c2a7ec)
+
+ 
 ---
 
 
