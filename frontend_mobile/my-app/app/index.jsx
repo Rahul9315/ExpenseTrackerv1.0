@@ -1,14 +1,17 @@
 import SignOutButton from '../components/SignOutButton'
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+import { FlatList, View, Text, TouchableOpacity } from "react-native";
 import { supabase } from "../lib/supabase"; // ✅ adjust path if needed
 //import Auth from "../components/Auth";       // ✅ your auth form
 import { Link } from "expo-router";
-import { Image } from 'react-native';
+import { Image ,Alert } from 'react-native';
 import { Redirect , useRouter} from "expo-router";
 import {styles} from  "../assets/styles/home.styles" ;
-
+import { Ionicons } from "@expo/vector-icons";
 import { useTransactions, usetransactions } from "../hooks/useTransactions";
+import { BalanceCard } from '../components/BalanceCard';
+import { TransactionItem } from '../components/TransactionItem';
+import  NoTransactionsFound  from '../components/NoTransactionsFound';
 
 
 export default function Index() {
@@ -47,71 +50,78 @@ export default function Index() {
     }
   }, [loadData, session?.user?.id]);
 
+ 
+
   if (loading) return null // or a splash screen
 
   if (!session) {
     return <Redirect href="/login" />;
   }
 
-  
+  const handleDelete = (id) => {
+    Alert.alert("Delete Transaction", "Are you sure you want to Delete??", [
+      { text: "Cancel", style: "cancel" },
+      { text: "Delete" , style: "destructive" , onPress: () => deleteTransaction(id) } ,
+    ]);
+   };
 
   return (
 
     
     <View style={styles.container}>
       <View style={styles.content}>
-      
-      {/* HEADER */}
-      <View style={styles.header}>
-        {/* LEFT Header */}
-        <View style={styles.headerLeft}>
-          <Image
-            source={require("../assets/images/logo_ocean_Blue.png")}
-            style={styles.headerLogo}
-            resizeMode= "contain"
-          />
-          <View style={styles.welcomeContainer}>
-            <Text style={styles.WelcomeText}>Welcome,</Text>
-            <Text>
-              {session.user?.email?.split("@")[0]}
-            </Text>
+        {/* HEADER */}
+        <View style={styles.header}>
+          {/* LEFT Header */}
+          <View style={styles.headerLeft}>
+            <Image
+              source={require("../assets/images/logo_ocean_Blue.png")}
+              style={styles.headerLogo}
+              resizeMode= "contain"
+            />
+            <View style={styles.welcomeContainer}>
+              <Text style={styles.welcomeText}>Welcome,</Text>
+              <Text style={styles.usernameText}>
+                {session.user?.email?.split("@")[0]}
+              </Text>
 
+            </View>
+          </View>
+
+          
+          {/* Right Header */}
+          <View style={styles.headerRight}>
+            <TouchableOpacity style={styles.addButton} onPress={ () => router.push("/create")}>
+              <Ionicons name='add' size={20} color="#FFF" />
+              <Text style={styles.addButtonText}>Add</Text>
+            </TouchableOpacity>
+            <SignOutButton />
           </View>
         </View>
 
-      </View>
+        <BalanceCard summary={summary} />
 
-      
+        <View style ={styles.transactionsHeaderContainer}>
+          <Text style={styles.sectionTitle}>Recent Transactions</Text>
+        </View>
 
       </View>
       
+      <FlatList
+        style={styles.transactionsList}
+        contentContainerStyle={styles.transactionsListContent}
+        data={transactions}
+        renderItem={({item}) => (
+          <TransactionItem item ={item} onDelete={handleDelete} />
+        )}
+
+        ListEmptyComponent={<NoTransactionsFound/>}
+        showsHorizontalScrollIndicator={false}
+      
+      />
 
     </View>
-
-
-
-
-
-
-
-    
-    /*
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      
-  
-      <Text>Welcome!</Text>
-      <Text style={{ marginBottom: 10 }}>User ID: {session.user.id}</Text>
-      <Text>Income: {summary.income}</Text>
-      <Text>Balaance: {summary.balance}</Text>
-      <Text>Expenses: {summary.expenses}</Text>
-      <Text></Text>
-      <Link href="/about" asChild>
-        <Text style={{ color: "blue" }}>Go to About</Text>
-      </Link>
-      <SignOutButton />
-
-    </View>
-    */
+   
   );
 }
 
@@ -129,26 +139,19 @@ export default function Index() {
 
 
 /*
-import { Background } from "@react-navigation/elements";
-import { Link } from "expo-router";
-import { Text, View } from "react-native";
-
-export default function Index() {
-  return (
-    <View
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this 123
-         screen.</Text>
-        <Link href={"/about"}> About </Link>
+  
+      <Text>Welcome!</Text>
+      <Text style={{ marginBottom: 10 }}>User ID: {session.user.id}</Text>
+      <Text>Income: {summary.income}</Text>
+      <Text>Balaance: {summary.balance}</Text>
+      <Text>Expenses: {summary.expenses}</Text>
+      <Text></Text>
+      <Link href="/about" asChild>
+        <Text style={{ color: "blue" }}>Go to About</Text>
+      </Link>
+      <SignOutButton />
+
     </View>
-  );
-}
-
-
-*/
+    */

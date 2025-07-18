@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
-//import { Alert, View } from 'react-native';
-//import { Input, Button } from '@rneui/themed';
 import { supabase } from '../lib/supabase';
-//import { router } from 'expo-router';
-//import React, { useState } from 'react';
 import { Alert, TouchableOpacity, View } from 'react-native';
-//import { StyleSheet  } from 'react-native';
 import { Text, TextInput} from "react-native";
-import { Image } from 'expo-image';
+import { Image } from 'react-native';
 import { Input, Button } from '@rneui/themed';
 import { Link, router } from 'expo-router';
 import { styles } from "../assets/styles/auth.styles" ;
