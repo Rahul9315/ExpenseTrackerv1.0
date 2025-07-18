@@ -1,5 +1,3 @@
-import { BackgroundImage } from "@rneui/base";
-
 // constants/colors.js
 const coffeeTheme = {
   primary: "#8B593E",
@@ -17,8 +15,7 @@ const coffeeTheme = {
 const forestTheme = {
   primary: "#2E7D32",
   background: "#E8F5E9",
-  //background: "#0c0c0cff",
-  //backgroundImage: require('../assets/images/LogInLogo.png'),
+ 
   text: "#1B5E20",
   border: "#C8E6C9",
   white: "#FFFFFF",
@@ -32,7 +29,7 @@ const forestTheme = {
 const purpleTheme = {
   primary: "#6A1B9A",
   background: "#F3E5F5",
-  backgroundImage: require('../assets/images/LogInLogo.png'),
+  
   text: "#4A148C",
   border: "#D1C4E9",
   white: "#FFFFFF",

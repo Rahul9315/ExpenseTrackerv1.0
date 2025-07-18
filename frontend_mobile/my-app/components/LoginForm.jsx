@@ -3,7 +3,7 @@ import { supabase } from '../lib/supabase';
 import { Alert, TouchableOpacity, View } from 'react-native';
 import { Text, TextInput} from "react-native";
 import { Image } from 'react-native';
-import { Input, Button } from '@rneui/themed';
+//import { Input, Button } from '@rneui/themed';
 import { Link, router } from 'expo-router';
 import { styles } from "../assets/styles/auth.styles" ;
 import { Ionicons } from "@expo/vector-icons" ;
