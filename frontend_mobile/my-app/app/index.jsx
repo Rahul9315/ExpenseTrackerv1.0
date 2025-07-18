@@ -1,6 +1,6 @@
 import SignOutButton from '../components/SignOutButton'
 import React, { useEffect, useState } from "react";
-import { FlatList, View, Text, TouchableOpacity } from "react-native";
+import { FlatList, View, Text, TouchableOpacity, RefreshControl } from "react-native";
 import { supabase } from "../lib/supabase"; // ✅ adjust path if needed
 //import Auth from "../components/Auth";       // ✅ your auth form
 import { Link } from "expo-router";
@@ -18,8 +18,8 @@ export default function Index() {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  //const {user} = useUser();
   const { transactions, summary, isLoading, loadData, deleteTransaction } = useTransactions(session?.user?.id);
+  const [refreshing , setRefreshing] = useState(false);
  
 
   useEffect(() => {
@@ -50,13 +50,11 @@ export default function Index() {
     }
   }, [loadData, session?.user?.id]);
 
- 
-
-  if (loading) return null // or a splash screen
-
-  if (!session) {
-    return <Redirect href="/login" />;
-  }
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await loadData();
+    setRefreshing(false);
+  };
 
   const handleDelete = (id) => {
     Alert.alert("Delete Transaction", "Are you sure you want to Delete??", [
@@ -65,6 +63,13 @@ export default function Index() {
     ]);
    };
 
+  if (loading && !refreshing) return null // or a splash screen
+
+  if (!session) {
+    return <Redirect href="/login" />;
+  }
+
+  
   return (
 
     
@@ -117,6 +122,7 @@ export default function Index() {
 
         ListEmptyComponent={<NoTransactionsFound/>}
         showsHorizontalScrollIndicator={false}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}  />}
       
       />
 
