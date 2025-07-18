@@ -6,12 +6,12 @@ A beautifully crafted cross-platform **React Native** app to manage personal fin
 
 ## 🌟 Features
 
-- 💰 Add, edit, and delete income/expenses
+- 💰 Add and delete income/expenses
 - 📈 Real-time balance calculation
 - 🔐 User authentication via Supabase
 - ☁️ Cloud sync using Supabase DB + Express API
 - 📱 Expo-powered Android/iOS build
-- 🧠 Clean, intuitive UI using React Native Elements (RNEUI)
+- 🧠 Clean, intuitive UI 
 
 ---
 
@@ -31,7 +31,10 @@ A beautifully crafted cross-platform **React Native** app to manage personal fin
 
 | Home | Add Expense | Dashboard |
 |------|-------------|-----------|
-| ![Home](./screenshots/home.png) | ![Add](./screenshots/add.png) | ![Dash](./screenshots/dashboard.png) |
+| ![Home](![WhatsApp Image 2025-07-18 at 11 47 05 AM (2)](https://github.com/user-attachments/assets/9dd350ca-3f31-4867-a698-933176a622a0)
+) | ![Add](![WhatsApp Image 2025-07-18 at 11 47 05 AM](https://github.com/user-attachments/assets/30e4e67b-5a33-4472-a7d0-8801b1e30ad2)
+) | ![Dash](![WhatsApp Image 2025-07-18 at 11 47 05 AM (1)](https://github.com/user-attachments/assets/1684dc42-e26b-42f8-b6b2-687652c97fc5)
+) |
 
 
 ---
@@ -66,5 +69,35 @@ Also add these environment variables on the Expo.dev dashboard under your projec
 npx expo start --tunnel
 ```
 Scan the QR with Expo Go on Android or iOS
+
+---
+
+##  📦 Build for Android
+
+```bash
+eas build -p android --profile preview
+```
+
+To build .apk directly (for local testing only):
+
+```bash
+eas build -p android --profile preview --platform android --local
+```
+
+Install EAS CLI globally first:
+```bash
+npm install -g eas-cli
+```
+
+---
+
+## 📁 Backend (Express on Render)
+
+- API deployed on Render.com
+- Use EXPO_PUBLIC_API_URL_RENDER to access the API from your mobile app
+
+
+
+
 
 
