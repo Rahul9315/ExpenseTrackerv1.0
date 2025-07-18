@@ -44,7 +44,7 @@ export default function LoginForm() {
 
       <View style={styles.container}>
 
-        <Image source={require('../assets/images/Empty.png')} style={styles.illustration}  />
+        <Image source={require('../assets/images/0204.png')} style={styles.illustration}  />
 
         <Text style={styles.title}>Sign In</Text>
 

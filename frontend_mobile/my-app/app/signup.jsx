@@ -8,32 +8,16 @@ import { styles } from "../assets/styles/auth.styles" ;
 
 export default function SignupScreen() {
   return (
+    <View style={styles.container}>
 
-    <View style={{flex: 1 , alignItems: "center", justifyContent: "center "}}>
-
-      <ImageBackground
-        source={require('../assets/images/SignInLogo_2.png')}
-        style={styles.background}
-        resizeMode="cover"
-      >
+       {/*<View style={{flex: 1 , alignItems: "center", justifyContent: "center "}}>*/}
+      
+     
         {/* All your screen content */}
         <SignupForm/>
-      </ImageBackground>
+      
       
     </View>
-/*
-    <KeyboardAwareScrollView
-      style={{flex: 1}}
-      contentContainerStyle = {{flexGrow: 1 }}
-      enableOnAndroid={true}
-      enableAutomaticScroll={true}
-      extraScrollHeight={100}
 
-    >
-
-      <SignupForm />
-    </KeyboardAwareScrollView>
-    
-    */
   );
 }

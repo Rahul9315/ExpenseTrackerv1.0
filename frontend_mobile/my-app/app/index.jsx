@@ -80,7 +80,7 @@ export default function Index() {
           {/* LEFT Header */}
           <View style={styles.headerLeft}>
             <Image
-              source={require("../assets/images/logo_ocean_Blue.png")}
+              source={require("../assets/images/couple-3.jpg")}
               style={styles.headerLogo}
               resizeMode= "contain"
             />
